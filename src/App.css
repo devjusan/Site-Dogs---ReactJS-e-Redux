@@ -65,7 +65,7 @@ a {
   position: relative;
 }
 
-.title::after {
+.title::before {
   content: '';
   display: block;
   width: 1.5rem;

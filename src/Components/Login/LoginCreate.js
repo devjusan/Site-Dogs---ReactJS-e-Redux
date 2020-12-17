@@ -5,16 +5,17 @@ import Error from '../Helper/Error';
 
 import useForm from '../../Hooks/useForm';
 import { USER_POST } from '../../api';
-import { UserContext } from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
 import Head from '../Helper/Head';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../store/user';
 
 const LoginCreate = () => {
   const username = useForm();
   const email = useForm('email');
   const password = useForm('password');
 
-  const { userLogin } = React.useContext(UserContext);
+  const dispatch = useDispatch();
   const { loading, error, request } = useFetch();
 
   async function handleUserCreate(event) {
@@ -28,7 +29,10 @@ const LoginCreate = () => {
 
     const { response } = await request(url, options);
 
-    if (response.ok) userLogin(username.value, password.value);
+    if (response.ok)
+      dispatch(
+        userLogin({ username: username.value, passowrd: password.value }),
+      );
   }
 
   return (

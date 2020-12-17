@@ -1,7 +1,7 @@
 import React from 'react';
 
 const useFetch = () => {
-  const [data, setData] = React.useState(null);
+  const [data, setData] = React.useState();
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
@@ -19,7 +19,7 @@ const useFetch = () => {
       json = null;
       setError(e.message);
     } finally {
-      setData(json);
+      setData([json]);
       setLoading(false);
       return { response, json };
     }
