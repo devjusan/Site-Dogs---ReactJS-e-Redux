@@ -1,9 +1,9 @@
 import React from 'react';
-import useFetch from '../../Hooks/useFetch';
 import Head from '../Helper/Head';
+import useFetch from '../../Hooks/useFetch';
+import { STATS_GET } from '../../api';
 import Loading from '../Helper/Loading';
 import Error from '../Helper/Error';
-import { STATS_GET } from '../../api';
 const UserStatsGraphs = React.lazy(() => import('./UserStatsGraphs'));
 
 const UserStats = () => {
@@ -22,8 +22,7 @@ const UserStats = () => {
   if (data)
     return (
       <React.Suspense fallback={<div></div>}>
-        {console.log('Stats: ' + data)}
-        <Head title="Estatísticas" description="Estatísticas do site Dogs." />
+        <Head title="Estatísticas" />
         <UserStatsGraphs data={data} />
       </React.Suspense>
     );
