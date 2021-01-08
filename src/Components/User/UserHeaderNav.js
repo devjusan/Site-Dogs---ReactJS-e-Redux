@@ -11,9 +11,7 @@ import { userLogout } from '../../store/user';
 
 const UserHeaderNav = () => {
   const dispatch = useDispatch();
-
   const mobile = useMedia('(max-width: 40rem)');
-  console.log(mobile);
   const [mobileMenu, setMobileMenu] = React.useState(false);
 
   const { pathname } = useLocation();
@@ -40,11 +38,11 @@ const UserHeaderNav = () => {
           <MinhasFotos />
           {mobile && 'Minhas Fotos'}
         </NavLink>
-        <NavLink to="estatisticas" activeClassName={styles.active}>
+        <NavLink to="/conta/estatisticas" activeClassName={styles.active}>
           <Estatisticas />
           {mobile && 'Estatísticas'}
         </NavLink>
-        <NavLink to="postar" activeClassName={styles.active}>
+        <NavLink to="/conta/postar" activeClassName={styles.active}>
           <AdicionarFoto />
           {mobile && 'Adicionar Foto'}
         </NavLink>
